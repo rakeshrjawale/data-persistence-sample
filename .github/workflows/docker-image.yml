@@ -22,5 +22,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag data-persistence-sample:latest
+    - name: Docker image
+      run: docker images
     - name: Docker push
-      run: docker push rakjaw/sample
+      run: docker push rakjaw/sample:latest
