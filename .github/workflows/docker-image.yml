@@ -25,4 +25,4 @@ jobs:
     - name: Docker image
       run: docker images
     - name: Docker push
-      run: docker push rakjaw/sample:latest
+      run: docker push rakjaw/data-persistence-sample 
