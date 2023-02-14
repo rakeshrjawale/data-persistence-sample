@@ -23,15 +23,15 @@ jobs:
     - name: Build the Docker image
       run: docker build -t data-persistence-sample:v1 .
     - name: Docker tag
-      run: docker tag data-persistence-sample:v1 $DOCKER_USER/data-persistence-sample:$(date +%s)
+      run: docker tag data-persistence-sample:v1 ${{secrets.DOCKERHUB_USERNAME}}/data-persistence-sample:$(date +%s)
     - name: Docker push
-      run: docker push $DOCKER_USER/data-persistence-sample:$(date +%s)
+      run: docker push ${{secrets.DOCKERHUB_USERNAME}}/data-persistence-sample:$(date +%s)
     - name: Docker rm images
-      run: docker rmi data-persistence-sample:v1 $DOCKER_USER/data-persistence-sample:$(date +%s)
+      run: docker rmi data-persistence-sample:v1 ${{secrets.DOCKERHUB_USERNAME}}/data-persistence-sample:$(date +%s)
     - name: Docker images
       run: docker images
     - name: Docker pull
-      run: docker pull $DOCKER_USER/data-persistence-sample:$(date +%s)
+      run: docker pull ${{secrets.DOCKERHUB_USERNAME}}/data-persistence-sample:$(date +%s)
     - name: Docker images
       run: docker images
 
