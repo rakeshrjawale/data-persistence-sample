@@ -22,10 +22,16 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
       run: docker build -t data-persistence-sample:v1 .
-    - name: Docker image
-      run: docker rmi
     - name: Docker tag
       run: docker tag data-persistence-sample:v1 $DOCKER_USER/data-persistence-sample:v1-release
     - name: Docker push
       run: docker push $DOCKER_USER/data-persistence-sample:v1-release
+    - name: Docker rm images
+      run: docker rmi data-persistence-sample:v1 $DOCKER_USER/data-persistence-sample:v1-release
+    - name: Docker images
+      run: docker images
+    - name: Docker pull
+      run: docker pull $DOCKER_USER/data-persistence-sample:v1-release
+    - name: Docker images
+      run: docker images
 
